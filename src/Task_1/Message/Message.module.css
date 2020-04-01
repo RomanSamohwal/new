@@ -1,0 +1,58 @@
+
+.cloud {
+    border: 1px solid aqua; /*Толщина рамки в пикселах,тип границы (в данном случае сплошная линия) и цвет линии */
+    border-radius: 4px;
+    height: auto;
+    padding: 5px; /*расстояние от текста до рамки*/
+    max-width: 200px; /*устанавливает максимальную ширину элемента*/
+    word-wrap: break-word; /*указывает, переносить или нет длинные слова, которые не помещаются по ширине в заданную область*/
+    background-color: aqua; /* внешний фон*/
+    position: relative;
+}
+
+.wrapper {
+    padding-left: 150px;
+    padding-top: 200px;
+}
+
+.before {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: white;
+    background-image: url("images.jfif");
+    position: absolute;
+    bottom: 0;
+    left: -140px;
+    content: '';
+}
+
+.after {
+    position: absolute; /* Абсолютное позиционирование*/
+    left: -40px;
+    bottom: -7px; /*Положение треугольника*/
+    border: 20px solid transparent; /*Прозрачные границы */
+    border-right: 20px solid aqua;
+    border-bottom: 20px solid aqua;
+}
+
+.name {
+    font-style: normal;
+    font-size: 80%;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.text {
+    font-style: normal;
+    font-size: 100%;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.time {
+    color: black;
+    font-weight: 500;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: right;
+}

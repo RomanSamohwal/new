@@ -1,0 +1,20 @@
+
+.input_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    height: 40px;
+    border-radius: 7px;
+}
+
+
+.input_box .input {
+    background-color: #61dafb;
+    border: none;
+    outline: none;
+    text-align: center;
+
+}
+
+

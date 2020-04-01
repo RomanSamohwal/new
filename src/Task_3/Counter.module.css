@@ -1,0 +1,12 @@
+.counter_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #61dafb;
+    border: 5px double white;
+    border-radius: 6px;
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+}
+

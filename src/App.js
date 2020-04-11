@@ -1,47 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Name from "./Task_1/Name/Name";
-import Quality from "./Task_2/Quality";
-import Message from "./Task_1/Message/Message";
-import Counter from "./Task_3/Button";
-import InputNames from "./Task_4/InputNames";
+import s from "./App.module.css"
+import Monday from "./Monday";
+import Navbar from "./Navbar/Navbar";
+import Tuesday from "./Tuesday";
+import Route from "react-router-dom/es/Route";
+import {HashRouter} from "react-router-dom";
+import Wednesday from "./Wednesday";
 
 class App extends React.Component {
-    state = {
-        count: 0,
-        name: []
-    };
-    reference = React.createRef();
+   state = {
+       isHidden: false
+   };
 
-    onAddClick = () => {
-        let newName = this.reference.current.value;
-        let newCount = this.state.count + 1;
-        this.changed(newCount, newName);
-        alert("Hello " + newName);
-        this.reference.current.value = "";
-        this.reference.current.focus();
-    };
-
-
-    changed = (newCount, newName)=>{
-        let newArr = [...this.state.name, newName];
-        this.setState({
-            count: newCount,
-            name: newArr
-        });
-    };
 
 
     render = () => {
         return (
-            <div className={"App"}>
-                <Name/>
-                <Message/>
-                <Quality/>
-                <Counter state={this.state} onAddClick = {this.onAddClick} reference = {this.reference} />
-                <InputNames name={this.state.name}/>
-            </div>
+           <HashRouter >
+               <div className={s.App}>
+                 <div>  {!this.state.isHidden&&<div>< Navbar/></div>}
+                   {!this.state.isHidden&&<span onClick={()=>this.setState({isHidden:true})} >Hide</span>}
+                   {this.state.isHidden&&<span onClick={()=>this.setState({isHidden:false})}>Show</span>}
+                      </div>
+                   <div><Route path="/monday" render={() => <Monday/>}/>
+                       <Route path="/tuesday" render={() => <Tuesday/>}/>
+                       <Route path="/wednesday" render={() => <Wednesday/>}/></div>
+                     </div>
+           </HashRouter>
         );
     }
 }

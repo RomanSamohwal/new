@@ -1,8 +1,9 @@
+/*
 .App {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;/* Свойство align-items выравнивает флекс-элементы внутри контейнера в перпендикулярном направлении*/
+  align-items: center;!* Свойство align-items выравнивает флекс-элементы внутри контейнера в перпендикулярном направлении*!
   justify-content: space-between;
   background-color: #61dafb;
   height: 570px;
@@ -44,3 +45,4 @@
   }
 }
 
+*/

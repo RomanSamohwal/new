@@ -1,19 +1,21 @@
 .navbar {
-    background-color: white;
-    width: 100%;
-    border-radius: 10px;
+    border: 2px solid white;
+    width: 40vw;
+    height: 10vh;
+    border-radius: 40px;
+
+
+
     display: flex;
-    text-align: center;
-    justify-content: space-between;
-    padding: 5%;
-    margin: 2%;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .navbar a {
-    color: #61dafb;
+    color: white;
     text-decoration: none;
 }
 
 .navbar a.active {
-    color: blueviolet;
+    color: blue;
 }

@@ -1,12 +1,12 @@
 
 .cloud {
-    border: 1px solid aqua; /*Толщина рамки в пикселах,тип границы (в данном случае сплошная линия) и цвет линии */
+    border: 1px solid white; /*Толщина рамки в пикселах,тип границы (в данном случае сплошная линия) и цвет линии */
     border-radius: 4px;
     height: auto;
     padding: 5px; /*расстояние от текста до рамки*/
     max-width: 200px; /*устанавливает максимальную ширину элемента*/
     word-wrap: break-word; /*указывает, переносить или нет длинные слова, которые не помещаются по ширине в заданную область*/
-    background-color: aqua; /* внешний фон*/
+    background-color: white; /* внешний фон*/
     position: relative;
 }
 
@@ -32,14 +32,14 @@
     left: -40px;
     bottom: -7px; /*Положение треугольника*/
     border: 20px solid transparent; /*Прозрачные границы */
-    border-right: 20px solid aqua;
-    border-bottom: 20px solid aqua;
+    border-right: 20px solid white;
+    border-bottom: 20px solid white;
 }
 
 .name {
     font-style: normal;
     font-size: 80%;
-    color: red;
+    color: #61dafb;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -51,7 +51,7 @@
 }
 
 .time {
-    color: black;
+    color: #61dafb;
     font-weight: 500;
     font-family: Arial, Helvetica, sans-serif;
     text-align: right;

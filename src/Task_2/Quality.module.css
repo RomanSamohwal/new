@@ -1,13 +1,13 @@
 .qualityAll{
     size: 100px;
-    color: darkred;
+    color: white;
     font-style: italic;
     font-family: Castellar;
 }
 
 .quality{
     size: 100px;
-    color: olivedrab;
+    color: blue;
     font-style: inherit;
     font-family: "Arial Rounded MT Bold";
 }

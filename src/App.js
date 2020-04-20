@@ -1,5 +1,4 @@
 import React from 'react';
-/*import './App.css';*/
 import s from "./App.module.css"
 import Monday from "./Monday";
 import Navbar from "./Navbar/Navbar";

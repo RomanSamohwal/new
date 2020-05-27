@@ -1,5 +1,6 @@
 import React from 'react';
 import s from "./Message.module.css";
+import image from './images.jfif'
 
 const Message = () => {
     return <div className={s.wrapper}>

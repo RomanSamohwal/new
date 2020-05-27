@@ -1,10 +1,19 @@
-
-
-export const save = (state) => {
-    localStorage.setItem("our-state", JSON.stringify(state));
+let state = {
+    tasks: [],
+    filterValue: "All"
 };
 
-export const restore = () => { return localStorage.getItem("our-state");};
+export const save = (key, state) => {
+    localStorage.setItem(key, JSON.stringify(state));
+};
+
+export const restore = (key) => {
+    if (localStorage.getItem(key) === null) {
+        return state
+    } else {
+        return JSON.parse( localStorage.getItem(key))
+    }
+};
 
 
 

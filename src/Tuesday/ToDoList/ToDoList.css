@@ -1,9 +1,16 @@
 .App {
     width: 30vw;
     height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .todoList {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     border: 3px solid white;
     border-radius: 20px;
     width: 250px;
@@ -15,7 +22,9 @@
 }
 
 .todoList-task {
-color: white;
+    color: white;
+    position: relative;
+    z-index: 0;
 }
 
 .filter-active {
@@ -32,4 +41,11 @@ color: white;
 
 .todoList-header__title{
     color: white;
+}
+
+   .cloudList {
+    position: absolute;
+    top: 0px;
+    left: 450px;
+    z-index: 2;
 }

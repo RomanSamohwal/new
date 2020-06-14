@@ -3,10 +3,17 @@ import load from "./assests/loading.gif"
 import style from "./Wednesday.module.css"
 import {connect} from "react-redux";
 import {setStyleAC} from "./redux/settingReducer";
+import axios from "axios";
 
 
 
 class Wednesday extends React.Component {
+
+    state = {
+        success: false
+
+    };
+
     onChangeStyle = (color) => {
         let styleColor;
         switch (color) {
@@ -23,14 +30,51 @@ class Wednesday extends React.Component {
         this.props.setStyle(styleColor);
     };
 
-   render = () => {
+    sendRequest=()=>{
+      axios.post('https://neko-cafe-back.herokuapp.com/auth/test', {success: this.state.success})
+          .then(res=>{
+              console.log(res.data);
+          })
+    };
+
+    tryCatch = async (f)=>{
+        try {
+            const response = await f();
+            console.log('answer: ', response.data);
+            return response;
+        } catch (e) {
+            console.log('error: ', {e});
+            return 'error';
+        }
+    };
+
+
+    setValueSuccess = () => {
+        if (this.state.success) {
+            this.setState({success: false})
+        } else {
+            this.setState({success: true})
+        }
+    };
+
+    render = () => {
         return (
             <div className={style.Wednesday + " " + this.props.style}>
                 <div className={style.box}>
-                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('green')}/>Green</p>
-                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('black')}/>Black</p>
-                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('brown')}/>Brown</p>
+                  <div>
+                      <p>SETTINGS :</p>
+                      <p><input type="radio" name="color" onClick={() => this.onChangeStyle('green')}/>Green</p>
+                      <p><input type="radio" name="color" onClick={() => this.onChangeStyle('black')}/>Black</p>
+                      <p><input type="radio" name="color" onClick={() => this.onChangeStyle('brown')}/>Brown</p>
+                  </div>
+                    <div>
+                         <p>SEND REQUEST</p>
+                        <div><input type="checkbox" onClick={this.setValueSuccess}/></div>
+                        <button onClick={()=>this.tryCatch(this.sendRequest)}>SEND</button>
+                    </div>
                 </div>
+
+
             </div>
         );
     }

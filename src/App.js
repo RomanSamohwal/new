@@ -8,30 +8,30 @@ import {HashRouter} from "react-router-dom";
 import Wednesday from "./Wednesday";
 import {saveState} from "./storage";
 import load from "./assests/loading.gif"
+import {connect} from "react-redux";
+import {changeLoadinAC} from "./redux/reducerTwist";
 
 class App extends React.Component {
    state = {
        isHidden: false,
-       loading: false
    };
 
     componentDidMount() {
         setTimeout(() => {
-            this.setState({loading: false})
+            this.props.changeLoading()
         }, 3000)
     }
 
 
     render = () => {
-          /*  let imgShow = this.state.loading? <img src={load}/>:"";*/
        return (
             <HashRouter>
-                <div className={s.App}>
+                <div className={s.App+" " + this.props.style}>
                     <div>  {!this.state.isHidden && <div>< Navbar/></div>}
                         {!this.state.isHidden && <span onClick={() => this.setState({isHidden: true})}>Hide</span>}
                         {this.state.isHidden && <span onClick={() => this.setState({isHidden: false})}>Show</span>}
                     </div>
-                    {this.state.loading?<img src={load} />:  <div><Route path="/monday" render={() => <Monday/>}/>
+                    {this.props.loading?<img src={load} />:  <div><Route path="/monday" render={() => <Monday/>}/>
                         <Route path="/tuesday" render={() => <Tuesday/>}/>
                         <Route path="/wednesday" render={() => <Wednesday/>}/>
                     </div>}
@@ -42,4 +42,14 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+    loading: state.twist.loading,
+    style: state.settings.style     });
+
+const mapDispatchToProps = (dispatch)=>{
+    return { changeLoading: ()=>{
+          dispatch(changeLoadinAC())
+        }}
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);

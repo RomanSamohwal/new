@@ -1,52 +1,48 @@
 import React from 'react';
-import Message from "./Task_1/Message/Message";
 import load from "./assests/loading.gif"
 import style from "./Wednesday.module.css"
-import Cloud from "./Tuesday/Cloud";
+import {connect} from "react-redux";
+import {setStyleAC} from "./redux/settingReducer";
+
 
 
 class Wednesday extends React.Component {
-   state = {
-       flag : false,
-       date: ""
-   };
-
-   onChangeFlag=()=>{
-    this.setState({flag : true})
-
-   };
-
-   offChangeFlag=()=>{
-       this.setState({flag : false})
-
-   };
-    fullTime;
-   onClickState=()=>{
-       this.setState({date: this.fullTime})
-   };
+    onChangeStyle = (color) => {
+        let styleColor;
+        switch (color) {
+            case 'green':
+                styleColor = style.green;
+                break;
+            case 'black':
+                styleColor = style.black;
+                break;
+            case 'brown':
+                styleColor = style.brown;
+                break;
+        }
+        this.props.setStyle(styleColor);
+    };
 
    render = () => {
-    let day = new Date().getDate();
-    let month= new Date().getMonth();
-    let year = new Date().getFullYear();
-    let hour = new Date().getHours();
-    let minute = new Date().getMinutes();
-    let second = new Date().getSeconds();
-
-   this.fullTime =`${day}:${month}:${year}   ${hour}:${minute}:${second}`;
-
         return (
-            <div onMouseOut={this.offChangeFlag} className={style.Wednesday}>
-               {/* {`create: ${this.fullTime}`}
-                <button onClick={this.onClickState}>ADD</button>
-
-                {this.state.date}*/}
-                <div  className={style.box}>
-                   <div onMouseOver={this.onChangeFlag}>x</div>{this.state.flag? <div  className={style.cloud}><Cloud/></div> : ""}
+            <div className={style.Wednesday + " " + this.props.style}>
+                <div className={style.box}>
+                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('green')}/>Green</p>
+                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('black')}/>Black</p>
+                    <p><input type="radio" name="color" onClick={() => this.onChangeStyle('brown')}/>Brown</p>
                 </div>
             </div>
         );
     }
 }
 
-export default Wednesday;
+const mapStateToProps = (state) => ({style: state.settings.style});
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setStyle: (style) => {
+            dispatch(setStyleAC(style))
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Wednesday);

@@ -1,6 +1,7 @@
 const SET_STYLE = 'SET_STYLE';
 
 
+
 const initialState = {
   style: ""
 };
@@ -14,3 +15,4 @@ export const settingReducer = (state=initialState, action)=>{
 
 
 export const setStyleAC = (style)=>({type: SET_STYLE, style});
+

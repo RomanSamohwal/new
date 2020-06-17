@@ -9,7 +9,8 @@ import Wednesday from "./Wednesday";
 import {saveState} from "./storage";
 import load from "./assests/loading.gif"
 import {connect} from "react-redux";
-import {changeLoadinAC} from "./redux/reducerTwist";
+import {changeLoadingSuccess} from "./redux/reducerTwist";
+import Preloader from "./assests/Preloader";
 
 class App extends React.Component {
    state = {
@@ -18,7 +19,7 @@ class App extends React.Component {
 
     componentDidMount() {
         setTimeout(() => {
-            this.props.changeLoading()
+            this.props.changeLoading(false)
         }, 3000)
     }
 
@@ -31,7 +32,7 @@ class App extends React.Component {
                         {!this.state.isHidden && <span onClick={() => this.setState({isHidden: true})}>Hide</span>}
                         {this.state.isHidden && <span onClick={() => this.setState({isHidden: false})}>Show</span>}
                     </div>
-                    {this.props.loading?<img src={load} />:  <div><Route path="/monday" render={() => <Monday/>}/>
+                    {this.props.loading?<Preloader/>: <div><Route path="/monday" render={() => <Monday/>}/>
                         <Route path="/tuesday" render={() => <Tuesday/>}/>
                         <Route path="/wednesday" render={() => <Wednesday/>}/>
                     </div>}
@@ -47,8 +48,8 @@ const mapStateToProps = (state) => ({
     style: state.settings.style     });
 
 const mapDispatchToProps = (dispatch)=>{
-    return { changeLoading: ()=>{
-          dispatch(changeLoadinAC())
+    return { changeLoading: (loading)=>{
+          dispatch(changeLoadingSuccess(loading))
         }}
 };
 

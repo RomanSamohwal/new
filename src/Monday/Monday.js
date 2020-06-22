@@ -1,11 +1,11 @@
 import React from 'react';
 
 import s from "./Monday.module.css"
-import Name from "./Task_1/Name/Name";
-import Quality from "./Task_2/Quality";
-import Message from "./Task_1/Message/Message";
-import Counter from "./Task_3/Button";
-import InputNames from "./Task_4/InputNames";
+import Name from "./Task1/Name/Name";
+import Quality from "./Task2/Quality";
+import Message from "./Task1/Message/Message";
+import Counter from "./Task3/Button";
+import InputNames from "./Task4/InputNames";
 
 class Monday extends React.Component {
     state = {

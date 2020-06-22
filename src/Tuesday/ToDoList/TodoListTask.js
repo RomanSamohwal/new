@@ -6,37 +6,9 @@ class TodoListTask extends React.Component {
 
     state = {
         editMode: false,
-        low: true,
-        medium: false,
-        high: false,
         flag: false
     };
 
-    componentDidMount() {
-        debugger;
-        switch (this.props.task.priority) {
-            case "medium":
-                this.setState({
-                    low: false,
-                    medium: true,
-                    high: false
-                });
-                break;
-            case "high":
-                this.setState({
-                    low: false,
-                    medium: false,
-                    high: true
-                });
-                break;
-            default :
-                this.setState({
-                    low: true,
-                    medium: false,
-                    high: false
-                })
-        }
-    }
 
     onIsDoneChanged = (e) => {
         this.props.changeStatus(this.props.task.id, e.currentTarget.checked);
@@ -46,33 +18,6 @@ class TodoListTask extends React.Component {
         this.props.changeTitle(this.props.task.id, e.currentTarget.value);
     };
 
-    changePriorityLow = (e) => {
-        console.log(e.currentTarget.value);
-        this.setState({
-            low: true,
-            medium: false,
-            high: false
-        });
-        this.props.changePriority(this.props.task.id, "low")
-    };
-    changePriorityMedium = (e) => {
-        console.log(e.currentTarget.value);
-        this.setState({
-            low: false,
-            medium: true,
-            high: false
-        });
-        this.props.changePriority(this.props.task.id, "medium")
-    };
-    changePriorityHigh = (e) => {
-        console.log(e.currentTarget.value);
-        this.setState({
-            low: false,
-            medium: false,
-            high: true
-        });
-        this.props.changePriority(this.props.task.id, "high")
-    };
 
     activateEditMode = () => {
         this.setState({editMode: true});
@@ -96,6 +41,11 @@ class TodoListTask extends React.Component {
 
     };
 
+    handleChange=(event)=> {
+        debugger
+        /*this.setState({value: event.target.value});*/
+        this.props.changePriority(this.props.task.id, event.target.value)
+    }
 
     render = () => {
 
@@ -113,10 +63,16 @@ class TodoListTask extends React.Component {
                         ? <input onBlur={this.deactivateEditMode} onChange={this.onTitleChanged} autoFocus={true}
                                  value={this.props.task.title}/>
                         : <span onClick={this.activateEditMode}>{this.props.task.id} - {this.props.task.title}</span>
-                    }, priority: <div>low <input type="checkbox" checked={this.state.low}
-                                                 onChange={this.changePriorityLow}/>
-                    medium <input type="checkbox" checked={this.state.medium} onChange={this.changePriorityMedium}/>
-                    high <input type="checkbox" checked={this.state.high} onChange={this.changePriorityHigh}/></div>
+                    }, priority:
+                    <form >
+                        <label>
+                            <select value ={this.props.priority}  onChange={this.handleChange}>
+                                <option value="low">low</option>
+                                <option value="medium">medium</option>
+                                <option value="high">high</option>
+                            </select>
+                        </label>
+                    </form>
                 </div>{this.state.flag? <div  className="cloudList"><Cloud task ={this.props.task}/></div> : ""}
              </div>
         );

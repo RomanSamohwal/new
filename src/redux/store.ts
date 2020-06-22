@@ -10,6 +10,8 @@ let reducers = combineReducers({
     twist: reducerTwist
 });
 
+export type AppStateType = ReturnType< typeof reducers>
+
 const store = createStore(reducers,applyMiddleware(thunkMiddleware));
 
 export default store;

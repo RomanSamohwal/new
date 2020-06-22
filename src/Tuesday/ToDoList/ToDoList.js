@@ -45,6 +45,7 @@ class ToDoList extends React.Component {
     };
 
     addTask = (newText) => {
+        debugger
         let newTask = {
             id: this.nextTaskId,
             title: newText,
@@ -100,6 +101,7 @@ class ToDoList extends React.Component {
     }
 
     changePriority = (taskId, priority) => {
+        debugger
         this.changeTask(taskId, {priority: priority});
     };
 
@@ -115,7 +117,7 @@ class ToDoList extends React.Component {
     };
 
     render = () => {
-
+       
         return (
             <div className="App">
                 <div className="todoList">

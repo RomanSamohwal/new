@@ -7,12 +7,10 @@ import { responseMessage} from "./redux/reducerTwist";
 
 
 
-
 class Wednesday extends React.Component {
 
     state = {
         success: false,
-        message: "",
         disable: false,
     };
 
@@ -41,8 +39,9 @@ class Wednesday extends React.Component {
     };
 
     sendRequest = () => {
-        debugger;
+        this.setState({disable: true});
         this.props.responseMessage(this.state.success)
+
     };
 
 
@@ -60,7 +59,7 @@ class Wednesday extends React.Component {
                          <p>SEND REQUEST</p>
                         <div><input type="checkbox" onClick={this.setValueSuccess}/></div>
                         <button onClick={this.sendRequest} disabled={this.state.disable}>SEND</button>
-                        <div>answer : {this.props.message}</div>
+                        <div>answer : <h1>{this.props.message}</h1></div>
                     </div>
 
                 </div>
@@ -70,15 +69,5 @@ class Wednesday extends React.Component {
 }
 
 const mapStateToProps = (state) =>  ( {style: state.settings.style}, {message: state.twist.message});
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setStyle: (style) => {
-            dispatch(setStyleAC(style))
-        },
-     /*   changeLoading: (loading) => {
-            dispatch(changeLoadinAC(loading))
-        },*/
-    }
-};
 
 export default connect(mapStateToProps, {responseMessage, setStyle: setStyleAC})(Wednesday);
